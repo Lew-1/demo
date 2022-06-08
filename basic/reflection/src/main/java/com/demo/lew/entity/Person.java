@@ -1,4 +1,4 @@
-package com.demo.lew;
+package com.demo.lew.entity;
 
 /**
  * @author luzhonghe
@@ -8,6 +8,12 @@ public class Person {
     
     private String name;
     public int age;
+
+    static {
+        test = 3;
+    }
+
+    static int test = 1;
 
     public String getName() {
         return name;

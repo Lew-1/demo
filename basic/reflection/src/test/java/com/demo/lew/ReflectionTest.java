@@ -1,5 +1,6 @@
 package com.demo.lew;
 
+import com.demo.lew.entity.Person;
 import org.junit.Test;
 
 import java.lang.annotation.ElementType;
@@ -62,7 +63,6 @@ public class ReflectionTest {
         Method showNation = clazz.getDeclaredMethod("showNation", String.class);
         showNation.setAccessible(true);
         showNation.invoke(p, "China");
-
     }
     
     // 获取 Class 实例的方式
@@ -76,11 +76,11 @@ public class ReflectionTest {
         Class<? extends Person> clazz1 = p1.getClass();
         System.out.println(clazz1);
         // 三：调用 Class 的静态方法：forName  （常用）
-        Class<?> clazz3 = Class.forName("com.demo.lew.Person");
+        Class<?> clazz3 = Class.forName("com.demo.lew.entity.Person");
         System.out.println(clazz3);
         // 四：使用类加载器：ClassLoader
         ClassLoader classLoader = ReflectionTest.class.getClassLoader();
-        Class<?> clazz4 = classLoader.loadClass("com.demo.lew.Person");
+        Class<?> clazz4 = classLoader.loadClass("com.demo.lew.entity.Person");
         System.out.println(clazz4);
         // 加载到内存中的运行时类，会缓存一定时间，可以在这段时间通过不同的方式来获取
         System.out.println(clazz == clazz1);
@@ -111,5 +111,12 @@ public class ReflectionTest {
         System.out.println(aClass2 == bClass);
         System.out.println(aClass2 == cClass);
     }
+    
+    @Test
+    public void test5() throws InstantiationException, IllegalAccessException {
+        Class<Person> personClass = Person.class;
+        Person person = personClass.newInstance();
+    }
+    
     
 }
