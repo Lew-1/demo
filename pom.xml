@@ -12,6 +12,8 @@
         <module>basic</module>
         <module>basic/reflection</module>
         <module>basic/proxy</module>
+        <module>frame</module>
+        <module>frame/spring</module>
     </modules>
 
     <properties>
