@@ -46,5 +46,21 @@ public class FieldTest {
         }
     }
     
+    // 修改类中属性
+    @Test
+    public void test3() throws InstantiationException, IllegalAccessException, NoSuchFieldException {
+        Class<Javaer> javaerClass = Javaer.class;
+        Javaer javaer = javaerClass.newInstance();
+        // 只能设置 public 权限的属性
+        Field id = javaerClass.getField("id");
+        id.set(javaer, 1);
+        System.out.println(javaer.getId());
+        // 可以设置任何权限的属性，非 public 的要设置 accessible
+        Field name = javaerClass.getDeclaredField("name");
+        name.setAccessible(true);
+        name.set(javaer, "tom");
+        System.out.println(javaer.getName());
+    }
+    
     
 }

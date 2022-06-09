@@ -2,6 +2,7 @@ package com.demo.lew.practice;
 
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -27,6 +28,22 @@ public class MethodTest {
         }
     }
     
+    // 调用方法
+    @Test
+    public void test1() throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Class<Javaer> javaerClass = Javaer.class;
+        Javaer javaer = javaerClass.newInstance();
+        Method show = javaerClass.getDeclaredMethod("show", String.class);
+        show.setAccessible(true);
+        // invoke 方法的返回值就是调用的方法的返回值，如果没有返回值，则为 null
+        show.invoke(javaer, "tt");
+        
+        // 调用静态方法
+        Method staticMethod = javaerClass.getDeclaredMethod("staticMethod", String.class);
+        // 第一个入参可以随便放个对象，不影响
+        Object returnValue = staticMethod.invoke(Javaer.class, "jack");
+        System.out.println(returnValue);
+    }
     
     
 }

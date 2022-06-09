@@ -45,7 +45,36 @@ public class Javaer extends Worker<String> implements Programming, Manager, Comp
         System.out.println("display");
     }
     
-    private void show() {
-        System.out.println("show");
+    private void show(String name) {
+        System.out.println("show " + name);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public static String staticMethod(String name) {
+        System.out.println("haha " + name);
+        return name;
     }
 }
